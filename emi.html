@@ -9,7 +9,7 @@
   <script>
     MathJax = {
       tex: {
-        inlineMath: [["$", "$"], ["\\(", "\\)"]]
+        inlineMath: [["\\(", "\\)"]]
       }
     };
   </script>
@@ -18,9 +18,18 @@
 <body>
   <div class="page-wrapper">
     <header>
-      <div class="container header-content">
-        <h1>EMI Calculator</h1>
-      </div>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html" style="font-size: 1.5rem; font-weight: bold; color: var(--accent); text-decoration: none;">Financeinto</a>
+            </div>
+            <nav aria-label="Main navigation">
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#tools">Tools</a>
+                    <a href="#guide">Guide</a>
+                </div>
+            </nav>
+        </div>
     </header>
 
     <main>
@@ -86,15 +95,15 @@
                 <p>While our automated EMI Calculator provides you with instant results, understanding the underlying mathematics can help you make better financial choices. The universal mathematical formula used by financial institutions to calculate EMI is:</p>
 
                 <div class="formula-box" style="padding: 15px; background-color: #f4f6f9; border-left: 4px solid #0056b3; margin: 15px 0;">
-                    $E = P \times R \times \frac{(1+R)^N}{(1+R)^N - 1}$
+                    \(E = P \times R \times \frac{(1+R)^N}{(1+R)^N - 1}\)
                 </div>
 
                 <p>Here is a breakdown of what each variable represents:</p>
                 <ul>
                     <li><strong>E (Equated Monthly Installment):</strong> The final amount you need to pay every month.</li>
                     <li><strong>P (Principal Loan Amount):</strong> The total amount of money you have borrowed.</li>
-                    <li><strong>R (Monthly Interest Rate):</strong> The interest rate calculated on a monthly basis. For example, if your annual interest rate is 12%, the monthly rate $R$ would be $\frac{12}{12 \times 100} = 0.01$.</li>
-                    <li><strong>N (Loan Tenure in Months):</strong> The total number of months you have to repay the loan. A 5-year loan would mean $N = 60$.</li>
+                    <li><strong>R (Monthly Interest Rate):</strong> The interest rate calculated on a monthly basis. For example, if your annual interest rate is 12%, the monthly rate \(R\) would be \(\frac{12}{12 \times 100} = 0.01\).</li>
+                    <li><strong>N (Loan Tenure in Months):</strong> The total number of months you have to repay the loan. A 5-year loan would mean \(N = 60\).</li>
                 </ul>
             </section>
 
