@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mutual Fund SIP Calculator to estimate invested amount, returns, and maturity value.">
+  <title>Mutual Fund SIP Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <header>
+      <div class="container header-content">
+        <h1>Mutual Fund SIP Calculator</h1>
+      </div>
+    </header>
 
+    <main>
+      <div class="container">
+        <section class="calculator-container" aria-labelledby="sip-calculator-title">
+          <h2 id="sip-calculator-title">Calculate SIP Returns</h2>
+          <p class="description">Enter your monthly SIP details to estimate long-term growth.</p>
+
+          <form id="sip-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="monthlyInvestment">Monthly Investment Amount</label>
+                <input type="number" id="monthlyInvestment" name="monthlyInvestment" min="0" step="0.01" placeholder="e.g. 5000" required>
+              </div>
+
+              <div class="form-group">
+                <label for="expectedReturnRate">Expected Return Rate (Annual %)</label>
+                <input type="number" id="expectedReturnRate" name="expectedReturnRate" min="0" step="0.01" placeholder="e.g. 12" required>
+              </div>
+
+              <div class="form-group">
+                <label for="timePeriodYears">Time Period (in Years)</label>
+                <input type="number" id="timePeriodYears" name="timePeriodYears" min="1" step="1" placeholder="e.g. 10" required>
+              </div>
+            </div>
+
+            <button type="button" id="calculateSip">Calculate Returns</button>
+          </form>
+
+          <section class="result" id="sip-results" aria-live="polite" aria-atomic="true">
+            <h3>SIP Summary</h3>
+            <p><strong>Total Amount Invested:</strong> <span id="totalInvestedValue">₹0.00</span></p>
+            <p><strong>Estimated Wealth Gained (Returns):</strong> <span id="wealthGainedValue">₹0.00</span></p>
+            <p><strong>Total Maturity Value:</strong> <span id="maturityValueValue">₹0.00</span></p>
+          </section>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container footer-content">
+        <section class="footer-articles" aria-label="Additional SIP resources"></section>
+      </div>
+    </footer>
+  </div>
+
+  <script src="sip.js" defer></script>
+</body>
+</html>
