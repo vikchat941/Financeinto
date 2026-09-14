@@ -1,1 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EMI Calculator to estimate monthly installments, total interest, and total payment.">
+  <title>EMI Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <header>
+      <div class="container header-content">
+        <h1>EMI Calculator</h1>
+      </div>
+    </header>
 
+    <main>
+      <div class="container">
+        <section class="calculator-container" aria-labelledby="emi-calculator-title">
+          <h2 id="emi-calculator-title">Calculate Your Loan EMI</h2>
+          <p class="description">Enter your loan details to get instant EMI insights.</p>
+
+          <form id="emi-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="principal">Principal Loan Amount (₹)</label>
+                <input type="number" id="principal" name="principal" min="0" step="0.01" placeholder="e.g. 500000" required>
+              </div>
+
+              <div class="form-group">
+                <label for="annualRate">Annual Interest Rate (%)</label>
+                <input type="number" id="annualRate" name="annualRate" min="0" step="0.01" placeholder="e.g. 8.5" required>
+              </div>
+
+              <div class="form-group">
+                <label for="tenureMonths">Loan Tenure (in Months)</label>
+                <input type="number" id="tenureMonths" name="tenureMonths" min="1" step="1" placeholder="e.g. 60" required>
+              </div>
+            </div>
+
+            <button type="button" id="calculateEmi">Calculate EMI</button>
+          </form>
+
+          <section class="result" id="emi-result" aria-live="polite" aria-atomic="true">
+            <h3>Loan Summary</h3>
+            <p><strong>Monthly EMI:</strong> <span id="monthlyEmiValue">₹0.00</span></p>
+            <p><strong>Total Interest Payable:</strong> <span id="totalInterestValue">₹0.00</span></p>
+            <p><strong>Total Amount (Principal + Interest):</strong> <span id="totalAmountValue">₹0.00</span></p>
+          </section>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container footer-content">
+        <section class="footer-articles" aria-label="Additional financial guidance">
+          <article class="footer-article">
+            <h3>More EMI Insights</h3>
+            <p>Additional educational and SEO content can be added here.</p>
+          </article>
+        </section>
+      </div>
+    </footer>
+  </div>
+
+  <script src="emi.js" defer></script>
+</body>
+</html>
