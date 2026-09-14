@@ -11,7 +11,7 @@
   <script>
     MathJax = {
       tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
+        inlineMath: [['\\(', '\\)']]
       }
     };
   </script>
@@ -22,9 +22,18 @@
 <body>
   <div class="page-wrapper">
     <header>
-      <div class="container header-content">
-        <h1>Mortgage Calculator</h1>
-      </div>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html" style="font-size: 1.5rem; font-weight: bold; color: var(--accent); text-decoration: none;">Financeinto</a>
+            </div>
+            <nav aria-label="Main navigation">
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#tools">Tools</a>
+                    <a href="#guide">Guide</a>
+                </div>
+            </nav>
+        </div>
     </header>
 
     <main>
@@ -95,15 +104,15 @@
                 <p>While our advanced Mortgage Calculator does the complex math for you in milliseconds, knowing the formula helps you understand how lenders determine your monthly bill. The standard mathematical formula used to calculate the fixed monthly payment is:</p>
 
                 <div class="formula-box" style="padding: 15px; background-color: #f4f6f9; border-left: 4px solid #0056b3; margin: 15px 0;">
-                    $M = P \times \frac{r(1+r)^n}{(1+r)^n - 1}$
+                    \(M = P \times \frac{r(1+r)^n}{(1+r)^n - 1}\)
                 </div>
 
                 <p>Here is what each letter represents in the equation:</p>
                 <ul>
                     <li><strong>M:</strong> Total monthly payment (excluding taxes and insurance).</li>
                     <li><strong>P:</strong> Principal loan amount (Purchase price minus your upfront down payment).</li>
-                    <li><strong>r:</strong> Monthly interest rate (Your annual interest rate divided by 12. For example, a 6% annual rate means $r = 0.005$).</li>
-                    <li><strong>n:</strong> Total number of payments over the life of the loan (For a 30-year mortgage, $n = 30 \times 12 = 360$).</li>
+                    <li><strong>r:</strong> Monthly interest rate (Your annual interest rate divided by 12. For example, a 6% annual rate means \(r = 0.005\)).</li>
+                    <li><strong>n:</strong> Total number of payments over the life of the loan (For a 30-year mortgage, \(n = 30 \times 12 = 360\)).</li>
                 </ul>
             </section>
 

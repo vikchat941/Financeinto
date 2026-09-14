@@ -11,7 +11,7 @@
   <script>
     MathJax = {
       tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
+        inlineMath: [['\\(', '\\)']]
       }
     };
   </script>
@@ -20,9 +20,18 @@
 <body>
   <div class="page-wrapper">
     <header>
-      <div class="container header-content">
-        <h1>Mutual Fund SIP Calculator</h1>
-      </div>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html" style="font-size: 1.5rem; font-weight: bold; color: var(--accent); text-decoration: none;">Financeinto</a>
+            </div>
+            <nav aria-label="Main navigation">
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#tools">Tools</a>
+                    <a href="#guide">Guide</a>
+                </div>
+            </nav>
+        </div>
     </header>
 
     <main>
@@ -82,15 +91,15 @@
                 <p>While our automated SIP Calculator instantly projects your future wealth, understanding the underlying mathematical formula can deepen your financial literacy. The future value of an SIP is calculated using the compound interest formula for regular contributions:</p>
 
                 <div class="formula-box" style="padding: 15px; background-color: #f4f6f9; border-left: 4px solid #0056b3; margin: 15px 0;">
-                    $FV=P\times\frac{(1+i)^n-1}{i}\times(1+i)$
+                    \(FV=P\times\frac{(1+i)^n-1}{i}\times(1+i)\)
                 </div>
 
                 <p>Here is what each variable in the equation stands for:</p>
                 <ul>
                     <li><strong>FV:</strong> Future Value (The total maturity amount you will receive).</li>
                     <li><strong>P:</strong> The fixed periodic investment amount (Your monthly SIP).</li>
-                    <li><strong>i:</strong> The monthly periodic rate of return. (If your expected annual return is 12%, then $i=\frac{12}{12\times100}=0.01$).</li>
-                    <li><strong>n:</strong> The total number of payments (If you invest for 10 years, $n=10\times12=120$ months).</li>
+                    <li><strong>i:</strong> The monthly periodic rate of return. (If your expected annual return is 12%, then \(i=\frac{12}{12\times100}=0.01\)).</li>
+                    <li><strong>n:</strong> The total number of payments (If you invest for 10 years, \(n=10\times12=120\) months).</li>
                 </ul>
             </section>
 
