@@ -26,7 +26,7 @@
         <p style="text-align: center; margin-bottom: 30px;">Have a question about our financial calculators, found a bug, or want to suggest a new feature? We'd love to hear from you!</p>
 
         <!-- संपर्क फॉर्म -->
-        <form action="#" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+        <form id="contactForm" action="#" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
             <div>
                 <label for="name" style="font-weight: bold; display: block; margin-bottom: 5px;">Your Name</label>
                 <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
@@ -48,6 +48,7 @@
             </div>
 
             <button type="submit" style="background-color: #0056b3; color: white; padding: 12px; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; font-weight: bold;">Send Message</button>
+            <p id="statusMessage" style="text-align: center; font-weight: bold; margin-top: 10px;"></p>
         </form>
 
         <!-- सीधे संपर्क की जानकारी -->
@@ -70,5 +71,58 @@
         <p style="text-align: center;">&copy; 2026 financeinto. All rights reserved.</p>
     </footer>
 
+    <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var form = this;
+        var statusMessage = document.getElementById('statusMessage');
+        var submitButton = form.querySelector('button[type="submit"]');
+
+        statusMessage.innerText = "Sending Message...";
+        statusMessage.style.color = "blue";
+        submitButton.disabled = true;
+
+        // SheetDB के अनुसार डेटा तैयार करना
+        var dataPayload = {
+            data: [
+                {
+                    "Date": new Date().toLocaleString(),
+                    "Name": form.name.value,
+                    "Email": form.email.value,
+                    "Subject": form.subject.value,
+                    "Message": form.message.value
+                }
+            ]
+        };
+
+        // SheetDB URL पर डेटा भेजना
+        fetch('https://sheetdb.io/api/v1/txxmliut4e291', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataPayload)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.created === 1) { // SheetDB सफलता पर 'created: 1' भेजता है
+                statusMessage.innerText = "Thank you! Your message has been sent successfully.";
+                statusMessage.style.color = "green";
+                form.reset();
+            } else {
+                statusMessage.innerText = "Something went wrong. Please try again.";
+                statusMessage.style.color = "red";
+            }
+            submitButton.disabled = false;
+        })
+        .catch(error => {
+            statusMessage.innerText = "Network error. Please try again later.";
+            statusMessage.style.color = "red";
+            submitButton.disabled = false;
+        });
+    });
+    </script>
 </body>
 </html>
