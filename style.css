@@ -7,14 +7,17 @@
 }
 
 :root {
-  --bg-main: #f5f7fa;
+  --bg-main: #f3f7f5;
   --bg-surface: #ffffff;
-  --text-main: #1f2d3d;
-  --text-muted: #5c6b7a;
-  --accent: #0056b3;
-  --accent-hover: #004494;
-  --border: #d7dee7;
-  --shadow-soft: 0 8px 24px rgba(31, 45, 61, 0.08);
+  --text-main: #193333;
+  --text-muted: #5c706f;
+  --accent: #0f766e;
+  --accent-hover: #0b5e58;
+  --primary: var(--accent);
+  --card-bg: var(--bg-surface);
+  --border: #d3e1dc;
+  --shadow-soft: 0 12px 30px rgba(25, 64, 59, 0.08);
+  --shadow-hover: 0 18px 36px rgba(25, 64, 59, 0.14);
 }
 
 html,
@@ -24,10 +27,24 @@ body {
 }
 
 body {
-  font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
-  background: var(--bg-main);
+  font-family: "DM Sans", "Trebuchet MS", sans-serif;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(15, 118, 110, 0.1), transparent 26rem),
+    linear-gradient(180deg, #f8fbf9 0%, var(--bg-main) 38%, #eef4f1 100%);
   color: var(--text-main);
   line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+h1,
+h2 {
+  text-wrap: balance;
 }
 
 img {
@@ -57,8 +74,12 @@ a:hover {
 }
 
 header {
-  background: var(--bg-surface);
-  border-bottom: 1px solid #e6ebf1;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
 }
 
 .header-content {
@@ -69,9 +90,34 @@ header {
   padding: 1rem 0;
 }
 
+.logo a {
+  color: var(--accent) !important;
+  font-size: 1.4rem !important;
+  letter-spacing: -0.02em;
+}
+
+header nav > div,
+header .nav-links {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem !important;
+}
+
+header nav a {
+  color: var(--text-main);
+  font-size: 0.93rem;
+  font-weight: 600;
+}
+
+header nav a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
 main {
   flex: 1;
-  padding: 2rem 0;
+  padding: clamp(1.5rem, 4vw, 3.5rem) 0;
 }
 
 /* Calculator area */
@@ -87,9 +133,15 @@ main {
 .calculator-container {
   background: var(--bg-surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 8px;
   box-shadow: var(--shadow-soft);
   padding: 1.25rem;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.calculator-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
 }
 
 .calculator h1,
@@ -124,7 +176,8 @@ main {
 
 label {
   font-weight: 600;
-  color: #2e3f51;
+  color: #244443;
+  font-size: 0.93rem;
 }
 
 input,
@@ -132,11 +185,12 @@ select,
 textarea {
   width: 100%;
   border: 1px solid #bcc8d6;
-  border-radius: 10px;
+  border-radius: 6px;
   background: #fff;
   color: var(--text-main);
   padding: 0.7rem 0.8rem;
   font: inherit;
+  min-height: 2.9rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -158,22 +212,22 @@ button,
 .btn,
 input[type="submit"] {
   border: 0;
-  border-radius: 10px;
+  border-radius: 6px;
   background: var(--accent);
   color: #fff;
   font: inherit;
   font-weight: 600;
   padding: 0.75rem 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 86, 179, 0.2);
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 5px 12px rgba(15, 118, 110, 0.2);
 }
 
 button:hover,
 .btn:hover,
 input[type="submit"]:hover {
   background: var(--accent-hover);
-  box-shadow: 0 6px 12px rgba(0, 86, 179, 0.3);
+  box-shadow: 0 8px 18px rgba(15, 118, 110, 0.28);
   transform: translateY(-2px);
 }
 
@@ -197,10 +251,33 @@ input[type="submit"]:focus-visible {
 .summary {
   margin-top: 1rem;
   padding: 0.9rem 1rem;
-  border-radius: 10px;
+  border: 1px solid #b9ded8;
   border-left: 4px solid var(--accent);
-  background: #eef5ff;
-  color: #12385f;
+  border-radius: 6px;
+  background: #effaf7;
+  color: #214a46;
+}
+
+.result h3,
+.summary h3 {
+  margin: 0 0 0.6rem;
+}
+
+.result p,
+.summary p {
+  align-items: baseline;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  margin: 0.45rem 0;
+}
+
+.result span,
+.summary span {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  text-align: right;
 }
 
 .accent {
@@ -230,8 +307,9 @@ th {
 /* Footer SEO article area */
 footer {
   margin-top: 2rem;
-  background: #eef2f7;
-  border-top: 1px solid #d8e0ea;
+  background: #173b39;
+  border-top: 1px solid #255955;
+  color: #e8f5f2;
 }
 
 .footer-content {
@@ -248,8 +326,8 @@ footer {
 .seo-article,
 .footer-article {
   background: #fff;
-  border: 1px solid #d6deea;
-  border-radius: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
   padding: 1rem;
 }
 
@@ -265,6 +343,57 @@ footer {
   color: var(--text-muted);
 }
 
+.seo-guide-section,
+.seo-content,
+.legal-container {
+  color: var(--text-muted);
+}
+
+.seo-guide-section {
+  border-top: 1px solid var(--border);
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+}
+
+.seo-guide-section h2,
+.seo-guide-section h3,
+.seo-content h2,
+.seo-content h3,
+.legal-container h1,
+.legal-container h2,
+.legal-container h3 {
+  color: var(--text-main);
+}
+
+.formula-box {
+  background: #edf7f4 !important;
+  border-left-color: var(--accent) !important;
+  border-radius: 6px;
+}
+
+.legal-container {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft) !important;
+}
+
+footer a {
+  color: #bde5df;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   main {
@@ -276,11 +405,16 @@ footer {
     align-items: flex-start;
   }
 
+  header nav > div,
+  header .nav-links {
+    gap: 0.75rem !important;
+  }
+
   .calculator,
   .calculator-card,
   .calculator-container {
     padding: 1rem;
-    border-radius: 12px;
+    border-radius: 8px;
   }
 
   .form-row {
@@ -295,5 +429,17 @@ footer {
 
   .footer-content {
     padding: 1.5rem 0;
+  }
+
+  .result p,
+  .summary p {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .result span,
+  .summary span {
+    text-align: left;
   }
 }
