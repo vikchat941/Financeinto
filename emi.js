@@ -2,7 +2,6 @@
 const principalInput = document.getElementById("principal");
 const annualRateInput = document.getElementById("annualRate");
 const tenureMonthsInput = document.getElementById("tenureMonths");
-const calculateButton = document.getElementById("calculateEmi");
 const emiForm = document.getElementById("emi-form");
 
 const monthlyEmiValue = document.getElementById("monthlyEmiValue");
@@ -29,12 +28,12 @@ function resetResults() {
 function calculateEmi() {
   const principal = Number.parseFloat(principalInput.value);
   const annualRate = Number.parseFloat(annualRateInput.value);
-  const tenureMonths = Number.parseInt(tenureMonthsInput.value, 10);
+  const tenureMonths = Number.parseFloat(tenureMonthsInput.value);
 
   const hasInvalidInput =
     !Number.isFinite(principal) ||
     !Number.isFinite(annualRate) ||
-    !Number.isFinite(tenureMonths) ||
+    !Number.isInteger(tenureMonths) ||
     principal <= 0 ||
     annualRate < 0 ||
     tenureMonths <= 0;
@@ -57,6 +56,15 @@ function calculateEmi() {
   const totalAmount = monthlyEmi * tenureMonths;
   const totalInterest = totalAmount - principal;
 
+  if (
+    !Number.isFinite(monthlyEmi) ||
+    !Number.isFinite(totalInterest) ||
+    !Number.isFinite(totalAmount)
+  ) {
+    resetResults();
+    return;
+  }
+
   updateResults(monthlyEmi, totalInterest, totalAmount);
 }
 
@@ -65,8 +73,4 @@ if (emiForm) {
     event.preventDefault();
     calculateEmi();
   });
-}
-
-if (calculateButton) {
-  calculateButton.addEventListener("click", calculateEmi);
 }

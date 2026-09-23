@@ -3,7 +3,6 @@ const homeValueInput = document.getElementById("homeValue");
 const downPaymentInput = document.getElementById("downPayment");
 const loanTermYearsInput = document.getElementById("loanTermYears");
 const annualInterestRateInput = document.getElementById("annualInterestRate");
-const calculateMortgageButton = document.getElementById("calculateMortgage");
 const mortgageForm = document.getElementById("mortgage-form");
 
 const principalLoanAmountOutput = document.getElementById("principalLoanAmount");
@@ -40,7 +39,7 @@ function calculateMortgage() {
   const hasInvalidInput =
     !Number.isFinite(homeValue) ||
     !Number.isFinite(downPayment) ||
-    !Number.isFinite(loanTermYears) ||
+    !Number.isInteger(loanTermYears) ||
     !Number.isFinite(annualInterestRate) ||
     homeValue <= 0 ||
     downPayment < 0 ||
@@ -69,6 +68,15 @@ function calculateMortgage() {
   const monthlyPropertyTax = (homeValue * 0.012) / 12;
   const totalMonthlyPayment = monthlyPrincipalInterest + monthlyPropertyTax;
 
+  if (
+    !Number.isFinite(monthlyPrincipalInterest) ||
+    !Number.isFinite(monthlyPropertyTax) ||
+    !Number.isFinite(totalMonthlyPayment)
+  ) {
+    resetOutputs();
+    return;
+  }
+
   updateOutputs(
     principalLoanAmount,
     monthlyPrincipalInterest,
@@ -82,8 +90,4 @@ if (mortgageForm) {
     event.preventDefault();
     calculateMortgage();
   });
-}
-
-if (calculateMortgageButton) {
-  calculateMortgageButton.addEventListener("click", calculateMortgage);
 }

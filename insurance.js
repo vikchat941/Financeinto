@@ -2,7 +2,6 @@
 const carTypeInput = document.getElementById("carType");
 const carAgeInput = document.getElementById("carAge");
 const driverAgeInput = document.getElementById("driverAge");
-const estimatePremiumButton = document.getElementById("estimatePremium");
 const insuranceForm = document.getElementById("insurance-form");
 
 const estimatedMonthlyPremiumOutput = document.getElementById("estimatedMonthlyPremium");
@@ -33,7 +32,12 @@ function calculateInsurancePremium() {
   const carAge = carAgeInput ? carAgeInput.value : "";
   const driverAge = Number.parseInt(driverAgeInput?.value ?? "", 10);
 
-  if (!carType || !carAge || !Number.isFinite(driverAge) || driverAge <= 0) {
+  if (
+    !carType ||
+    !carAge ||
+    !Number.isInteger(driverAge) ||
+    driverAge < 16
+  ) {
     resetPremiumResults();
     return;
   }
@@ -59,6 +63,12 @@ function calculateInsurancePremium() {
   }
 
   const monthlyPremium = annualPremium / 12;
+
+  if (!Number.isFinite(monthlyPremium) || !Number.isFinite(annualPremium)) {
+    resetPremiumResults();
+    return;
+  }
+
   updatePremiumResults(monthlyPremium, annualPremium);
 }
 
@@ -67,8 +77,4 @@ if (insuranceForm) {
     event.preventDefault();
     calculateInsurancePremium();
   });
-}
-
-if (estimatePremiumButton) {
-  estimatePremiumButton.addEventListener("click", calculateInsurancePremium);
 }

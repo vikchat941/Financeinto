@@ -2,7 +2,6 @@
 const monthlyInvestmentInput = document.getElementById("monthlyInvestment");
 const expectedReturnRateInput = document.getElementById("expectedReturnRate");
 const timePeriodYearsInput = document.getElementById("timePeriodYears");
-const calculateSipButton = document.getElementById("calculateSip");
 const sipForm = document.getElementById("sip-form");
 
 const totalInvestedValue = document.getElementById("totalInvestedValue");
@@ -34,7 +33,7 @@ function calculateSip() {
   const hasInvalidInput =
     !Number.isFinite(monthlyInvestment) ||
     !Number.isFinite(annualRate) ||
-    !Number.isFinite(years) ||
+    !Number.isInteger(years) ||
     monthlyInvestment <= 0 ||
     annualRate < 0 ||
     years <= 0;
@@ -57,6 +56,16 @@ function calculateSip() {
   }
 
   const wealthGained = maturityValue - totalInvested;
+
+  if (
+    !Number.isFinite(maturityValue) ||
+    !Number.isFinite(wealthGained) ||
+    !Number.isFinite(totalInvested)
+  ) {
+    resetResults();
+    return;
+  }
+
   updateResults(totalInvested, wealthGained, maturityValue);
 }
 
@@ -65,8 +74,4 @@ if (sipForm) {
     event.preventDefault();
     calculateSip();
   });
-}
-
-if (calculateSipButton) {
-  calculateSipButton.addEventListener("click", calculateSip);
 }
