@@ -26,6 +26,11 @@ body {
   padding: 0;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   font-family: "DM Sans", "Trebuchet MS", sans-serif;
   background:
@@ -33,6 +38,7 @@ body {
     linear-gradient(180deg, #f8fbf9 0%, var(--bg-main) 38%, #eef4f1 100%);
   color: var(--text-main);
   line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
 h1,
@@ -45,6 +51,24 @@ h3 {
 h1,
 h2 {
   text-wrap: balance;
+}
+
+p,
+li,
+label,
+button,
+input,
+select,
+textarea,
+a {
+  overflow-wrap: anywhere;
+}
+
+.header-content > *,
+.form-group,
+.result p > *,
+.summary p > * {
+  min-width: 0;
 }
 
 img {
@@ -190,6 +214,7 @@ textarea {
   color: var(--text-main);
   padding: 0.7rem 0.8rem;
   font: inherit;
+  line-height: 1.35;
   min-height: 2.9rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -375,6 +400,12 @@ footer {
   background: var(--bg-surface) !important;
   border: 1px solid var(--border);
   box-shadow: var(--shadow-soft) !important;
+}
+
+.mjx-container {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 footer a {
