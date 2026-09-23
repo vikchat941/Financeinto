@@ -402,6 +402,20 @@ footer {
   color: var(--text-main);
 }
 
+footer .seo-guide-section {
+  color: #e8f5f2;
+}
+
+footer .seo-guide-section h2,
+footer .seo-guide-section h3 {
+  color: #ffffff;
+}
+
+footer .seo-guide-section p,
+footer .seo-guide-section li {
+  color: #d5ebe7;
+}
+
 .formula-box {
   background: #edf7f4 !important;
   border-left-color: var(--accent) !important;
@@ -476,6 +490,10 @@ footer {
 .copyright {
   color: #e8f5f2;
   font-weight: 700;
+}
+
+footer .copyright {
+  color: #ffffff;
 }
 
 .mjx-container {
