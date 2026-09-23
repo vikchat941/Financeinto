@@ -97,7 +97,7 @@ a:hover {
   margin: 0 auto;
 }
 
-header {
+.page-wrapper > header {
   position: sticky;
   top: 0;
   z-index: 10;
@@ -115,26 +115,38 @@ header {
 }
 
 .logo a {
+  align-items: center;
   color: var(--accent) !important;
+  display: inline-flex;
   font-size: 1.4rem !important;
+  gap: 0.6rem;
   letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
 }
 
-header nav > div,
-header .nav-links {
+.brand-mark {
+  border-radius: 8px;
+  display: block;
+  height: 2rem;
+  width: 2rem;
+}
+
+.page-wrapper > header nav > div,
+.page-wrapper > header .nav-links {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   gap: 1.1rem !important;
 }
 
-header nav a {
+.page-wrapper > header nav a {
   color: var(--text-main);
   font-size: 0.93rem;
   font-weight: 600;
 }
 
-header nav a:hover {
+.page-wrapper > header nav a:hover {
   color: var(--accent);
   text-decoration: none;
 }
@@ -402,6 +414,54 @@ footer {
   box-shadow: var(--shadow-soft) !important;
 }
 
+.about-content {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.about-content h1 {
+  margin-top: 0;
+}
+
+.about-content .lead {
+  color: var(--text-main);
+  font-size: 1.15rem;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.article-meta {
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+
+.footer-bottom {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.footer-bottom nav > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.copyright {
+  color: #e8f5f2;
+  font-weight: 700;
+}
+
 .mjx-container {
   max-width: 100%;
   overflow-x: auto;
@@ -436,8 +496,8 @@ footer a:hover {
     align-items: flex-start;
   }
 
-  header nav > div,
-  header .nav-links {
+  .page-wrapper > header nav > div,
+  .page-wrapper > header .nav-links {
     gap: 0.75rem !important;
   }
 
@@ -460,6 +520,11 @@ footer a:hover {
 
   .footer-content {
     padding: 1.5rem 0;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .result p,
