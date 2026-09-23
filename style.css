@@ -15,6 +15,9 @@
   --accent-hover: #0b5e58;
   --primary: var(--accent);
   --card-bg: var(--bg-surface);
+  --article-bg: var(--bg-surface);
+  --article-text: #203b3a;
+  --article-muted: #4e6664;
   --border: #d3e1dc;
   --shadow-soft: 0 12px 30px rgba(25, 64, 59, 0.08);
   --shadow-hover: 0 18px 36px rgba(25, 64, 59, 0.14);
@@ -387,9 +390,13 @@ footer {
 }
 
 .seo-guide-section {
-  border-top: 1px solid var(--border);
+  background: var(--article-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+  color: var(--article-text);
   margin-top: 2.5rem;
-  padding-top: 2rem;
+  padding: 2rem clamp(1rem, 3vw, 2rem);
 }
 
 .seo-guide-section h2,
@@ -402,24 +409,25 @@ footer {
   color: var(--text-main);
 }
 
+.seo-guide-section p,
+.seo-guide-section li {
+  color: var(--article-muted);
+}
+
+.seo-guide-section strong,
+.seo-guide-section em {
+  color: var(--article-text);
+}
+
 footer .seo-guide-section {
-  color: #e8f5f2;
-}
-
-footer .seo-guide-section h2,
-footer .seo-guide-section h3 {
-  color: #ffffff;
-}
-
-footer .seo-guide-section p,
-footer .seo-guide-section li {
-  color: #d5ebe7;
+  color: var(--article-text);
 }
 
 .formula-box {
   background: #edf7f4 !important;
   border-left-color: var(--accent) !important;
   border-radius: 6px;
+  color: var(--article-text);
 }
 
 .legal-container {
