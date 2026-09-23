@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
   <title id="title">Financeinto</title>
   <desc id="desc">A white F with an upward gold finance chart on a teal rounded square.</desc>
-  <rect width="256" height="256" rx="56" fill="#0f766e"/>
+  <rect width="256" height="256" rx="56" fill="#15803d"/>
   <path d="M72 72h94v28h-62v31h53v27h-53v42H72V72Z" fill="#fff"/>
   <path d="m137 177 20-20 15 12 30-36" fill="none" stroke="#f4c95d" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"/>
   <path d="m183 133 19-1-4 18" fill="none" stroke="#f4c95d" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"/>
